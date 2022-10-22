@@ -7,7 +7,7 @@ export const enum Screens {
 
 export type RootStackParamList = {
   [Screens.MilsCategories]: undefined;
-  [Screens.MealOverview]: undefined;
+  [Screens.MealOverview]: { categoryId: string };
 };
 
 export type ScreenProps<ScreenName extends keyof RootStackParamList> =

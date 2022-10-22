@@ -1,6 +1,7 @@
 import React from "react";
-import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { Category } from "../types";
+import { CustomCard } from "./ui/CustomCard";
 
 interface Props {
   category: Category;
@@ -14,35 +15,21 @@ export const CategoryItem: React.FC<Props> = (props) => {
     onPress(category.id)
   }
 
-  return <View style={styles.item}>
-    <Pressable android_ripple={{ color: '#ccc' }} style={({ pressed }) => ([styles.pressable, { backgroundColor: category.color }, pressed ? styles.active : null])} onPress={onCategoryPress}>
+  return (
+    <CustomCard isPressable onPress={onCategoryPress} innerStyles={{ backgroundColor: category.color }} style={styles.item} >
       <View style={[styles.inner]}>
         <Text style={styles.text}>{category.title}</Text>
       </View>
-    </Pressable>
-  </View>
+    </CustomCard>
+  )
 }
 
 
 const styles = StyleSheet.create({
   item: {
-    flex: 1,
+    borderRadius: 8,
     margin: 16,
     height: 150,
-    elevation: 4,
-    borderRadius: 8,
-    shadowColor: 'black',
-    shadowOpacity: 0.25,
-    shadowOffset: { height: 2, width: 0 },
-    shadowRadius: 8,
-    backgroundColor: 'white',
-    overflow: Platform.OS === 'android' ? 'hidden' : "visible"
-  },
-  pressable: {
-    flex: 1,
-  },
-  active: {
-    opacity: 0.8
   },
   inner: {
     flex: 1,

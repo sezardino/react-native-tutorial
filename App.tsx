@@ -13,8 +13,8 @@ export default function App() {
     <>
       <StatusBar style='light' />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name={Screens.MilsCategories} component={CategoriesScreen} />
+        <Stack.Navigator screenOptions={{ headerTitleAlign: 'center' }}>
+          <Stack.Screen name={Screens.MilsCategories} component={CategoriesScreen} options={{ title: 'All Categories' }} />
           <Stack.Screen name={Screens.MealOverview} component={MealOverviewScreen} />
         </Stack.Navigator>
       </NavigationContainer>
