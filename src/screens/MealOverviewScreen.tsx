@@ -26,7 +26,7 @@ export const MealOverviewScreen = (props: ScreenProps<Screens.MealOverview>) => 
 
   return (
     <View style={styles.screen}>
-      <FlatList data={mils} keyExtractor={(item) => item.id} renderItem={({ item }) => <MealItem meal={item} style={styles.item} />} style={styles.wrapper} />
+      <FlatList data={mils} keyExtractor={(item) => item.id} renderItem={(data) => <MealItem meal={data.item} style={styles.item} onPress={() => navigation.navigate(Screens.MealDetails, { mealId: data.item.id })} />} style={styles.wrapper} />
     </View>
   )
 }

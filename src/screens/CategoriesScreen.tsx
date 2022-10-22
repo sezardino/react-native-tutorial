@@ -9,7 +9,7 @@ export const CategoriesScreen = (props: ScreenProps<Screens.MilsCategories>) => 
   const { navigation } = props;
 
   const renderItemFunc = (data: ListRenderItemInfo<Category>) => (
-    <CategoryItem category={data.item} onPress={(categoryId: string) => navigation.navigate(Screens.MealOverview, { categoryId })} />
+    <CategoryItem category={data.item} onPress={() => navigation.navigate(Screens.MealOverview, { categoryId: data.item.id })} />
   )
 
 

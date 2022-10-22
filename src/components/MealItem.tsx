@@ -1,19 +1,20 @@
-import React from "react"
-import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native"
+import React from "react";
+import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from "react-native";
 
-import { Meal } from "../types"
-import { CustomCard } from "./ui/CustomCard"
+import { Meal } from "../types";
+import { CustomCard } from "./ui/CustomCard";
 
 interface Props {
-  meal: Meal,
-  style: StyleProp<ViewStyle>
+  meal: Meal;
+  style: StyleProp<ViewStyle>;
+  onPress: () => void;
 }
 
 export const MealItem: React.FC<Props> = (props) => {
-  const { meal, style } = props
+  const { meal, style, onPress } = props
 
   return (
-    <CustomCard style={[styles.cardInner, style]}>
+    <CustomCard style={[styles.cardInner, style]} isPressable onPress={onPress}>
       <Image source={{ uri: meal.imageUrl }} style={styles.image} />
       <View style={styles.body}>
         <Text style={styles.title}>{meal.title}</Text>
