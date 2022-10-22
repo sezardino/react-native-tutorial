@@ -1,16 +1,21 @@
-import React from "react"
-import { Platform, Pressable, StyleSheet, Text, View } from "react-native"
-import { Category } from "../types"
+import React from "react";
+import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
+import { Category } from "../types";
 
 interface Props {
-  category: Category
+  category: Category;
+  onPress: (category: string) => void;
 }
 
 export const CategoryItem: React.FC<Props> = (props) => {
-  const { category } = props
+  const { category, onPress } = props
+
+  const onCategoryPress = () => {
+    onPress(category.id)
+  }
 
   return <View style={styles.item}>
-    <Pressable android_ripple={{ color: '#ccc' }} style={({ pressed }) => ([styles.pressable, { backgroundColor: category.color }, pressed ? styles.active : null])}>
+    <Pressable android_ripple={{ color: '#ccc' }} style={({ pressed }) => ([styles.pressable, { backgroundColor: category.color }, pressed ? styles.active : null])} onPress={onCategoryPress}>
       <View style={[styles.inner]}>
         <Text style={styles.text}>{category.title}</Text>
       </View>
